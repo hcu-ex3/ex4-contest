@@ -13,6 +13,8 @@ import numpy as np
 import sys
 import RPi.GPIO as GPIO
 
+import baton_stopper as bs
+
 ################################
 
 print('Python {0}.{1}.{2}'.format(sys.version_info.major, sys.version_info.minor, sys.version_info.micro))
@@ -134,6 +136,9 @@ time.sleep(1.0)
 
 ################
 
+#オブジェクトの宣言
+green_stopper = bs.BatonStopper()
+
 if MJPGSTREAMER == False:
     # Use webcam
     cap = cv2.VideoCapture(0)
@@ -223,6 +228,9 @@ while(1):
     else:
         print('len(contours) < 1')
         
+    green_stopper.checkGreenStop(frame0)
+    green_stopper.LineStop(frame0)
+
     if GUI:
         cv2.rectangle(frame,(0,0),(LW-1,LH-1),(0,255,0),1)
         cv2.imshow('frame0', frame0)
