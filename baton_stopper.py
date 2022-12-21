@@ -36,10 +36,13 @@ def stopLine(image):
     
     for cnt in contours:
         x, y, w, h = cv2.boundingRect(cnt)
-        print("x={0}, y={1}, w={2}, h={3}, WW={4}".format(x, y, w, h, LW2))
+        #print("x={0}, y={1}, w={2}, h={3}, WW={4}".format(x, y, w, h, LW2))
         if w > int(LW2 * 0.7):
-            print('found stop line')
+            #print('found stop line')
             r3pi.stop()
+            return True
+    
+    return False
         
     
 
@@ -53,4 +56,5 @@ class BatonStopper:
 
     def LineStop(self, image):
         if self.green_flag:
-            stopLine(image)
+            return stopLine(image)
+        return False

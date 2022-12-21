@@ -229,7 +229,9 @@ while(1):
         print('len(contours) < 1')
         
     green_stopper.checkGreenStop(frame0)
-    green_stopper.LineStop(frame0)
+    run_end = green_stopper.LineStop(frame0)
+    if run_end:
+        break
 
     if GUI:
         cv2.rectangle(frame,(0,0),(LW-1,LH-1),(0,255,0),1)
