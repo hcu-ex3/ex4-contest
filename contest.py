@@ -13,6 +13,9 @@ import numpy as np
 import sys
 import RPi.GPIO as GPIO
 
+# 内部関数
+from check_distance import check_distance
+
 ################################
 
 print('Python {0}.{1}.{2}'.format(sys.version_info.major, sys.version_info.minor, sys.version_info.micro))
@@ -149,6 +152,12 @@ f = 0
 start = time1 = time.time()
 
 while(1):
+    # 仮　実際には緑検知したら読み込む
+    check_dis = check_distance(230)
+    if check_dis == 1:
+        r3pi.stop
+        break
+    
     # Take a frame
     _, frame0 = cap.read()
     
