@@ -241,4 +241,3 @@ while(1):
 
 cv2.destroyAllWindows()
 r3pi.stop()
-
