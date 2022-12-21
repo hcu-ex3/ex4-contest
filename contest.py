@@ -13,6 +13,8 @@ import numpy as np
 import sys
 import RPi.GPIO as GPIO
 
+from rotation import rotation
+
 ################################
 
 print('Python {0}.{1}.{2}'.format(sys.version_info.major, sys.version_info.minor, sys.version_info.micro))
@@ -148,7 +150,12 @@ cap_sleep(30)
 f = 0
 start = time1 = time.time()
 
+
 while(1):
+    rotation(0.6)
+    r3pi.stop
+    r3pi.forward(0.1)
+
     # Take a frame
     _, frame0 = cap.read()
     
