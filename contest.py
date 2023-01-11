@@ -139,7 +139,7 @@ time.sleep(1.0)
 ################
 
 #オブジェクトの宣言
-green_stopper = bs.BatonStopper()
+green_stopper = bs.BatonStopperSound()
 
 if MJPGSTREAMER == False:
     # Use webcam
