@@ -13,6 +13,7 @@ import numpy as np
 import sys
 import RPi.GPIO as GPIO
 from red_find import colorcone
+import baton_start
 
 import baton_stopper as bs
 
@@ -153,6 +154,8 @@ cap_sleep(30)
 
 f = 0
 start = time1 = time.time()
+
+baton_start.check_start(cap)
 
 while(1):
 
