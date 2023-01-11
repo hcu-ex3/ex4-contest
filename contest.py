@@ -12,6 +12,7 @@ import cv2
 import numpy as np
 import sys
 import RPi.GPIO as GPIO
+from red_find import colorcone
 
 ################################
 
@@ -149,8 +150,11 @@ f = 0
 start = time1 = time.time()
 
 while(1):
+
     # Take a frame
     _, frame0 = cap.read()
+
+    colorcone(frame0)
     
     # trim low part only
     frame = frame0[LY:LY+LH, LX:LX+LW]
@@ -174,6 +178,9 @@ while(1):
     # opencv4
     contours, hierarchy = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     cv2.drawContours(frame, contours, -1, RED, 3)
+    
+    
+
     
     if len(contours) >= 1:
         # Black object(s) detected
