@@ -58,3 +58,10 @@ class BatonStopper:
         if self.green_flag:
             return stopLine(image)
         return False
+
+class BatonStopperSound(BatonStopper):
+    def checkGreenStop(self, image):
+        if pb.isPassBaton(image):
+            r3pi.play("C")
+            self.green_flag = True
+        
