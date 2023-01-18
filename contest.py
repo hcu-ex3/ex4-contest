@@ -11,6 +11,7 @@ import r3pi
 import cv2
 import numpy as np
 import sys
+import yaml
 import RPi.GPIO as GPIO
 from red_find import colorcone
 import baton_start
@@ -23,6 +24,10 @@ print('Python {0}.{1}.{2}'.format(sys.version_info.major, sys.version_info.minor
 print('OpenCV {0}'.format(cv2.__version__))
 
 ################################
+
+# config.yamlの読み込み
+with open('config.yml', 'r') as yml:
+  config = yaml.load(yml)
 
 # Global parameters
 MJPGSTREAMER = False # True # False if you use webcam
@@ -155,7 +160,10 @@ cap_sleep(30)
 f = 0
 start = time1 = time.time()
 
-baton_start.check_start(cap)
+if config["baton"]["start"] == True:
+    baton_start.check_start(cap)
+else:
+    time.sleep(2)
 
 while(1):
 
