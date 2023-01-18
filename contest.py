@@ -251,6 +251,8 @@ while(1):
     green_stopper.checkGreenStop(frame0)
     run_end = green_stopper.LineStop(frame0)
     if run_end:
+        baton_start.rotation(config["baton"]["rotation2"])
+        r3pi.stop
         break
 
     if GUI:
