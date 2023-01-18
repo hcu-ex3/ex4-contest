@@ -11,6 +11,8 @@ baton:
 # red_find.py用
 # left_motor, right_motor, sleep の順番
 motor:
+  # 回避するかどうか
+  motor: False
   # 障害物回避1/3
   1-l: 0.2
   1-r: 0.1

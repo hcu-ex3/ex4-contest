@@ -170,7 +170,9 @@ while(1):
     # Take a frame
     _, frame0 = cap.read()
 
-    colorcone(frame0)
+    if config["motor"]["motor"] == True:
+        colorcone(frame0)
+
     
     # trim low part only
     frame = frame0[LY:LY+LH, LX:LX+LW]
