@@ -2,7 +2,12 @@ import time
 import math
 import r3pi
 import cv2
+import yaml
 import numpy as np
+
+# config.yamlの読み込み
+with open('config.yml', 'r') as yml:
+  config = yaml.load(yml)
 
 # 320x240
 WIDTH = 320
@@ -60,13 +65,16 @@ def colorcone(image):
         
         
         if find_red:
-            r3pi.left_motor(0.2)
-            r3pi.right_motor(0.1)
-            time.sleep(1.5)
-            r3pi.left_motor(0.1)
-            r3pi.right_motor(0.22)
-            time.sleep(1.5)
-            r3pi.left_motor(0.12)
-            r3pi.right_motor(0.2)
-            time.sleep(1.5)
+            
+            r3pi.left_motor(config['motor']['1-l'])
+            r3pi.right_motor(config['motor']['1-r'])
+            time.sleep(config['motor']['1-s'])
+            
+            r3pi.left_motor(config['motor']['2-l'])
+            r3pi.right_motor(config['motor']['2-r'])
+            time.sleep(config['motor']['2-s'])
+
+            r3pi.left_motor(config['motor']['3-l'])
+            r3pi.right_motor(config['motor']['3-r'])
+            time.sleep(config['motor']['3-s'])
             find_red = False

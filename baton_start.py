@@ -6,8 +6,14 @@ from rotation import rotation
 import cv2
 import r3pi
 import time
+import yaml
 import numpy as np
 import pass_baton as pb
+
+# config.yamlの読み込み
+with open('config.yml', 'r') as yml:
+  config = yaml.load(yml)
+
 
 def get_distance(criterion):
   distance = r3pi.pot_voltage()
@@ -28,5 +34,5 @@ def check_start(cap):
   while not get_distance(550) or not pb.isPassBaton(frame0):
     _, frame0 = cap.read()
     time.sleep(0.1)
-  rotation(0.55)
+  rotation(config['baton']['rotation'])
 
